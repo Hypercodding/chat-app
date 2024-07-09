@@ -7,7 +7,7 @@ type Props = {}
 const ConversationPage = (props: Props) => {
   return (
     <>
-    <ItemList title='coversations'>Conversations</ItemList>
+    <ItemList title='coversations' action=''>Conversations</ItemList>
         <ConversationContainer>Conversation</ConversationContainer>
 
     </>
