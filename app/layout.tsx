@@ -4,6 +4,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ConvexClerkProvider from "@/provider/ConvexClerkProvider";
 import App from "@/components/shared/App";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/ui/theme/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ThemeProvider
+           attribute="class"
+           defaultTheme="system"
+           enableSystem
+           disableTransitionOnChange
+           >
         <ConvexClerkProvider>
-          <App>{children}</App>
+          <App><TooltipProvider>{children}</TooltipProvider><Toaster richColors/></App>
         </ConvexClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
