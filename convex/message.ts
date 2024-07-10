@@ -20,5 +20,24 @@ export const create = mutation({
     if(!currentUser){
         throw new ConvexError("Not a user")
     }
+
+    const membership = await ctx.db.query("conversationMembers").withIndex("by_memberId_conversationId", q=>q.eq("memberId", currentUser._id).eq("conversationId", args.conversationId)).unique();
+
+    if(!membership){
+        throw new ConvexError("You are not the member of this Conversation!")
+    }
+
+    const message = await ctx.db.insert("messages", {
+        senderId: currentUser._id,
+        ...args
+    })
+
+    await ctx.db.patch(args.conversationId, {
+        lastMessageId: message
+    });
+
+    return message;
+
+
     }
 })
