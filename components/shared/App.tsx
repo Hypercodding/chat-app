@@ -9,9 +9,12 @@ import { SignIn, SignUp, SignUpButton } from "@clerk/nextjs";
 function App({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Unauthenticated><div className="flex items-center justify-center min-h-screen w-full">
+      <Unauthenticated><div className="flex items-center justify-center min-h-screen w-full gap-4">
         <Card className="flex items-center justify-center bg-secondary p-4">
-        <SignUpButton />
+        if you are new then - <SignUpButton />
+        </Card>
+        <Card className="flex items-center justify-center bg-secondary p-4">
+        <SignInButton />
         </Card>
         </div>
       </Unauthenticated>
