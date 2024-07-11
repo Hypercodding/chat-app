@@ -24,6 +24,8 @@ const ConversationsPage = () => {
                 id={conversation.conversation._id}
                 username={conversation.otherMember?.username || ""}
                 imageUrl={conversation.otherMember?.imageurl || ""}
+                lastMessageContent={conversation.lastMessage?.content}
+                lastMessageSender={conversation.lastMessage?.sender}
 
             />
         })) : <Loader2/>
