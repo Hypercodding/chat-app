@@ -1,29 +1,25 @@
 "use client";
-import { SignInButton} from "@clerk/clerk-react";
-import { Authenticated, AuthLoading, Unauthenticated, useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
+import { SignInButton } from "@clerk/clerk-react";
+import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
 import LoadingLogo from "./LoadingLogo";
 import "./app.css";
-import { Button } from "../ui/button";
-
+import { Card } from "../ui/card";
+import { SignIn } from "@clerk/nextjs";
 
 function App({ children }: { children: React.ReactNode }) {
   return (
-    <main>
+   <>
       <Unauthenticated>
-        <SignInButton />
-        <Button>Hammad</Button>
+        <SignIn/>
       </Unauthenticated>
       <AuthLoading>
-        <LoadingLogo/>
+        <LoadingLogo />
       </AuthLoading>
       <Authenticated>
-       
         {children}
       </Authenticated>
-    </main>
+      </>
   );
 }
-
 
 export default App;
