@@ -1,5 +1,5 @@
 // convex/functions.ts
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 import { internalMutation, internalQuery } from "./_generated/server";
 
 export const createUser = internalMutation({
@@ -10,6 +10,12 @@ export const createUser = internalMutation({
     email: v.string(),
   },
   handler: async (ctx, args) => {
+   // Check if a user with the same email already exists
+   const users = await ctx.db.query("users").withIndex("by_email", q => q.eq("email", args.email)).collect();
+
+   if (users.length > 0) {
+     throw new ConvexError("User already exists");
+   }
     await ctx.db.insert("users", args);
   },
 });
