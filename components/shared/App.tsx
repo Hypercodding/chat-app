@@ -4,14 +4,15 @@ import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
 import LoadingLogo from "./LoadingLogo";
 import "./app.css";
 import { Card } from "../ui/card";
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, SignUp, SignUpButton } from "@clerk/nextjs";
 
 function App({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Unauthenticated>
-        <div className="flex items-center justify-center min-h-screen">
-        <SignIn/>
+      <Unauthenticated><div className="flex items-center justify-center min-h-screen w-full">
+        <Card className="flex items-center justify-center bg-secondary p-4">
+        <SignUpButton />
+        </Card>
         </div>
       </Unauthenticated>
       <AuthLoading>
