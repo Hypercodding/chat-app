@@ -1,15 +1,18 @@
 "use client";
-
+import { SignInButton } from "@clerk/clerk-react";
 import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
 import LoadingLogo from "./LoadingLogo";
 import "./app.css";
+import { Card } from "../ui/card";
 import { SignIn } from "@clerk/nextjs";
 
 function App({ children }: { children: React.ReactNode }) {
   return (
-   <>
+    <>
       <Unauthenticated>
+        <div className="flex items-center justify-center min-h-screen">
         <SignIn/>
+        </div>
       </Unauthenticated>
       <AuthLoading>
         <LoadingLogo />
@@ -17,7 +20,7 @@ function App({ children }: { children: React.ReactNode }) {
       <Authenticated>
         {children}
       </Authenticated>
-      </>
+    </>
   );
 }
 
