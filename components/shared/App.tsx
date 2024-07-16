@@ -11,7 +11,7 @@ function App({ children }: { children: React.ReactNode }) {
     <>
       <Unauthenticated><div className="flex items-center justify-center min-h-screen w-full gap-4">
         <Card className="flex items-center justify-center bg-secondary p-4">
-        if you are new then - <SignUpButton />
+        <SignUpButton />
         </Card>
         <Card className="flex items-center justify-center bg-secondary p-4">
         <SignInButton />
